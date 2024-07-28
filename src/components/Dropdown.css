@@ -1,0 +1,167 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dropdown.Center {
+  position: fixed;
+  top:50%;
+  left:50%;
+  transform: translate(-50%, -50%);
+}
+
+.dropdown.TopLeft {
+  position:absolute;
+  top:0;
+  left:0;
+  margin: 10px;
+}
+
+.dropdown.BottomLeft {
+  bottom:0;
+  left:0;
+  margin: 10px;
+}
+.dropdown.TopRight {
+  top:0;
+  right:0;
+  margin: 10px;
+}
+.dropdown.BottomRight{
+  bottom:0;
+  right:0;
+  margin: 10px;
+}
+
+.dropdown-label {
+  display: flex;
+  align-items: center;
+  color: #282829;
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.dropdown-input {
+  display: flex;
+  align-items: center;
+  height: 26px;
+  max-height: 40px;
+  width: fit-content;
+  border: 1px solid #d9d9db;
+  border-radius: 6px;
+  padding: 1px;
+  padding-left: 2px;
+  cursor: pointer;
+}
+
+.dropdown-input.Error {
+  border-width: 2px;
+  border-color: #f73131;
+}
+
+.dropdown-input.Disabled {
+  background-color: #f2f3f5;
+  cursor: not-allowed;
+}
+
+.dropdown-text {
+  font-size: 12px;
+  color: #c0c0c2;
+  cursor: pointer;
+  border: none;
+  outline: none;
+}
+
+.dropdown-text.Filled {
+  color: #282829;
+}
+
+.dropdown-text.Disabled {
+  background-color: #f2f3f5;
+  cursor: not-allowed;
+}
+
+.dropdown-label {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.dropdown-label.hidden {
+  display: none;
+}
+
+.icon {
+  width: 24px;
+  color: #747475;
+}
+.info-icon {
+  margin-left:3px;
+}
+
+.dropdown-helper-text {
+  font-size: 8px;
+  color: #282829;
+}
+
+.dropdown-arrow{
+  color: #4ec84e;
+}
+
+li.tooltip {
+  position: relative;
+  left: 50%;
+  height: 10px;
+  width: 6px;
+}
+li.tooltip :hover{
+  background:#fff;
+  color:#fff;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 40px;
+  border: 1px solid #d9d9db;
+  border-radius: 4px;
+  list-style: none;
+  padding: 0;
+  z-index: 1000;
+}
+
+.dropdown-menu .dropdown.open {
+  display: block;
+  position: relative;
+  top:0;
+  left:0;
+}
+
+.dropdown-menu li {
+  padding: 0px;
+  cursor: pointer;
+}
+
+.dropdown-menu li:hover {
+  background: #f2f3f5;
+}
+
+.dropdown-menu li.active {
+  background: #edfaed;
+}
+
+.dropdown-category {
+  font-weight: bold;
+  padding: 10px;
+  background: #f2f3f5;
+}
+
+.dropdown-item-text {
+  margin:2px;
+  color: #c0c0c2;
+}
+
+input[type="checkbox"] {
+  accent-color: #4ec84e;
+}
