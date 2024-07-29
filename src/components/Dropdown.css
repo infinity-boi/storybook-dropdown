@@ -73,6 +73,10 @@
   outline: none;
 }
 
+.dropdown-text li.active {
+  color: #282829;
+}
+
 .dropdown-text.Filled {
   color: #282829;
 }
@@ -113,8 +117,9 @@
 li.tooltip {
   position: relative;
   left: 50%;
-  height: 10px;
+  height: 5px;
   width: 6px;
+
 }
 li.tooltip :hover{
   background:#fff;
@@ -126,6 +131,7 @@ li.tooltip :hover{
   top: 40px;
   border: 1px solid #d9d9db;
   border-radius: 4px;
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
   list-style: none;
   padding: 0;
   z-index: 1000;
@@ -155,6 +161,7 @@ li.tooltip :hover{
   font-weight: bold;
   padding: 10px;
   background: #f2f3f5;
+  text-align: center;
 }
 
 .dropdown-item-text {
@@ -163,5 +170,10 @@ li.tooltip :hover{
 }
 
 input[type="checkbox"] {
+  opacity: 0;
   accent-color: #4ec84e;
 }
+input[type="radio"] {
+  accent-color: #4ec84e;
+}
+

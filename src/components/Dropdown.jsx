@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { UserCircle, Info, CaretDown, Triangle } from 'phosphor-react';
+import { UserCircle, Info, CaretDown, Triangle, Check } from 'phosphor-react';
+import PropTypes from 'prop-types';
 import './Dropdown.css';
 
 const Dropdown = ({
@@ -16,7 +17,6 @@ const Dropdown = ({
   activeItemIndex,
   items,
   categories,
-  onChange,
   onSelect,
   toggleDropdown
 }) => {
@@ -27,13 +27,13 @@ const Dropdown = ({
   const [selectedIndex, setSelectedIndex] = useState(activeItemIndex);
   const [selectedItems, setSelectedItems] = useState([]);
   const [categoryItem, setCategoryItem] = useState();
-  const [currentStatus, setCurrentStatus] = useState(status);
   const dropdownWidth = "200px";
 
   // styles
   // changes orientation of tooltip according to dropdown opening direction
   let tooltipstyle = {
-    rotate: (dropdownDirection==="bottom") ? "0deg" : (dropdownDirection==="top") ? "180deg" : (dropdownDirection==="left") ? "90deg" : "270eg"
+    rotate: (dropdownDirection==="bottom") ? "0deg" : (dropdownDirection==="top") ? "180deg" : (dropdownDirection==="left") ? "90deg" : "270eg",
+    transform : "translate(0%, -220%)",
   }
   // flips righticon when input box is clicked
   let dropdownmenustyle = {
@@ -41,6 +41,10 @@ const Dropdown = ({
   }
   let dropdownstyle = {
     width : dropdownWidth,
+  }
+  let checkstyle= {
+    position:"absolute",
+    right: "6"
   }
 
   toggleDropdown = () => {
@@ -64,8 +68,7 @@ const Dropdown = ({
       setSelectedIndex(index);
       setIsOpen(false);
     }
-    onChange && onChange(index);
-    onSelect && onSelect(index);
+    onSelect(index);
   };
 
   useEffect(() => {
@@ -110,12 +113,16 @@ const Dropdown = ({
           (type === 'Multi')
             ? (selectedItems.includes(index) ? 'active' : '')
             : index === selectedIndex ? 'active' : ''
+        } 
+        ${
+          (type==="SingleCategories" && categories[categoryIndex].items[index]===categoryItem) ? "active" : ""
         }`}
         onClick={() => handleSelectItem(index, categoryIndex)}
       >
         {type === 'SingleRadio' && <input type="radio" checked={index === selectedIndex} readOnly />}
         {type === 'Multi' && <input type="checkbox" checked={selectedItems.includes(index)} readOnly />}
         {item}
+        {type === "Multi" && selectedItems.includes(index) && <Check size={16} style={checkstyle} color="#4ec84e"/>}
       </li>
     ))
   );
@@ -132,7 +139,7 @@ const Dropdown = ({
       <div className={`dropdown-input ${status}`} onClick={toggleDropdown}>
         {leftIconVisibility==='Visible' && <UserCircle className="icon"/>}
         <input
-          className={`dropdown-text`}
+          className={`dropdown-text ${status}`}
           type="text"
           value={text}
           readOnly
@@ -163,6 +170,22 @@ const Dropdown = ({
     </div>
     </div>
   );
+};
+
+
+Dropdown.propTypes = {
+  label: PropTypes.string,
+  labelVisibility: PropTypes.string,
+  status: PropTypes.string,
+  labelIconVisibility: PropTypes.string,
+  leftIconVisibility: PropTypes.string,
+  helperText: PropTypes.string,
+  required: PropTypes.bool,
+  text: PropTypes.string,
+  type: PropTypes.string,
+  items: PropTypes.arrayOf(PropTypes.string),
+  categories: PropTypes.arrayOf(PropTypes.object),
+  onSelect: PropTypes.func.isRequired,
 };
 
 export default Dropdown;

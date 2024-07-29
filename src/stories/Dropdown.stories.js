@@ -1,7 +1,8 @@
 // src/components/Dropdown.stories.js
 import React from 'react';
 import Dropdown from '../components/Dropdown';
-import { useState } from 'react';
+// import { useState } from 'react';
+import { action } from '@storybook/addon-actions';
 
 export default {
   title: 'Components/Dropdown',
@@ -37,21 +38,21 @@ const Template = (args) => <Dropdown {...args} />;
 //     return <Dropdown {...args} activeItemIndex={activeItemIndex} onSelect={handleSelect} />;
 //   };
 
-export const Master = Template.bind({});
-Master.args = {
-  label: 'Select Item',
-  labelVisibility: 'Visible',
-  status: 'Filled',
-  positonOf:'Center',
-  labelIconVisibility: 'Visible',
-  leftIconVisibility: 'Visible',
-  helperText: 'Please select an item',
-  required: true,
-  text: '',
-  type: 'SingleNoIcon',
-  activeItemIndex: -1,
-  items: ['React', 'Angular', 'Vue']
-};
+// export const Master = Template.bind({});
+// Master.args = {
+//   label: 'Select Item',
+//   labelVisibility: 'Visible',
+//   status: 'Filled',
+//   positonOf:'TopLeft',
+//   labelIconVisibility: 'Visible',
+//   leftIconVisibility: 'Visible',
+//   helperText: 'Please select an item',
+//   required: true,
+//   text: '',
+//   type: 'SingleNoIcon',
+//   activeItemIndex: -1,
+//   items: ['React', 'Angular', 'Vue']
+// };
 
 
 export const SingleSelectionNoIcon = Template.bind({});
@@ -60,14 +61,16 @@ SingleSelectionNoIcon.args = {
     labelVisibility: 'Visible',
     status: 'Unfilled',
     positionOf:'TopLeft',
-    labelIconVisibility: 'Hidden',
-    leftIconVisibility: 'Hidden',
+    labelIconVisibility: 'Visible',
+    leftIconVisibility: 'Visible',
     helperText: 'Please select an item',
     required: true,
     text: '',
     type: 'SingleNoIcon',
     activeItemIndex: -1,
-    items: ['Web Development', 'Data Science', 'Cyber Security', 'Machine Learning', 'Cloud Computing']
+    items: ['Web Development', 'Data Science', 'Cyber Security', 'Machine Learning', 'Cloud Computing'],
+    onSelect: action('item-selected')
+    
 };
 
 export const SingleSelectionRadio = Template.bind({});
@@ -83,7 +86,8 @@ SingleSelectionRadio.args = {
   text: '',
   type: 'SingleRadio',
   activeItemIndex: -1,
-  items: ['Apple', 'Banana', 'Mango', 'Grapes', 'Tomato']
+  items: ['Apple', 'Banana', 'Mango', 'Grapes', 'Tomato'],
+  onSelect: action('item-selected')
 };
 
 
@@ -100,7 +104,8 @@ MultipleSelectionCheck.args = {
   text: '',
   type: 'Multi',
   activeItemIndex: -1,
-  items: ['Web Development', 'Data Science', 'Cyber Security', 'Machine Learning', 'Cloud Computing']
+  items: ['Web Development', 'Data Science', 'Cyber Security', 'Machine Learning', 'Cloud Computing'],
+  onSelect: action('item-selected')
 };
 
 
@@ -123,5 +128,6 @@ SingleSelectionMultipleCategories.args = {
     { name: 'Machine Learning', items: ['Keras', 'TensorFlow'] },
     { name: 'Cloud Computing', items: ['AWS', 'Azure', 'GCP'] },
     { name: 'Android Development', items: ['React Native', 'Flutter', 'Android Studio'] },
-  ]
+  ],
+  onSelect: action('item-selected')
 };
